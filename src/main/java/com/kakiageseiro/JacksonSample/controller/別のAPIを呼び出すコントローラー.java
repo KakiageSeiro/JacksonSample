@@ -13,7 +13,7 @@ public class 別のAPIを呼び出すコントローラー {
     private static Hoge連携クライアントファクトリ Hoge連携クライアントファクトリ;
 
     @GetMapping("/test/call")
-    public void call(){
+    public void call() {
         try {
             long personID = 1L;
             String userID = "userID123";
