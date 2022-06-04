@@ -18,11 +18,11 @@ public class Hoge連携クライアント {
         this.path = path;
     }
 
-    // このサンプルプロジェクトではつかってないよ！
     public String get() {
         return restTemplate.getForObject(this.url + this.path, String.class);
     }
 
+    // このサンプルプロジェクトではつかってないよ！
     public Hoge結果型 post(Hoge依頼型 payload) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);

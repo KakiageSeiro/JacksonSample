@@ -22,10 +22,14 @@ public class 別のAPIを呼び出すコントローラー {
             Payload payload = new Payload(987);
             Hoge依頼型<Payload> hoge依頼 = new Hoge依頼型<>(Auth.作成する(personID, userID, languageCode), projectID, payload);
 
-            String なんか指定しなきゃいけないIDかなんか = "tenpura";
+            String なんか指定しなきゃいけないIDかなんか = "";
 
-            String Hoge連携APIパス = "";
-            Hoge連携クライアントファクトリ.getクライアント(Hoge連携APIパス, なんか指定しなきゃいけないIDかなんか).post(hoge依頼);
+            // サンプルとして無料で使えるAPIをよびだしてみる
+            // http://project.iw3.org/zip_search_x0401/
+            String Hoge連携APIパス = "http://api.thni.net/jzip/X0401/JSON/144/0052.js";
+            // Hoge連携クライアントファクトリ.getクライアント(Hoge連携APIパス, なんか指定しなきゃいけないIDかなんか).post(hoge依頼);
+            String res = Hoge連携クライアントファクトリ.getクライアント(Hoge連携APIパス, なんか指定しなきゃいけないIDかなんか).get();
+            System.out.println(res);
         } catch (ApiLinkFailureException e) {
             // logger.info(e.getMessage());
             throw new IllegalStateException("message.error.qualitymanagement.defect_input.registration.fail");
