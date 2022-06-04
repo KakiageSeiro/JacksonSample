@@ -13,11 +13,11 @@ public class Hoge連携クライアントファクトリ {
     @Value("${external.hoge.baseurl}")
     String baseUrl;
 
-    public Hoge連携クライアント getクライアント(String path, String id) {
-        // これってなにしてたっけ？
-        String url = String.format(this.baseUrl, id);
+    public Hoge連携クライアント 生成(String path) {
 
-        return new Hoge連携クライアント(this.getRestTemplate(), url, path);
+        // String url = String.format(this.baseUrl, id); 引数でIDもらってURLに埋め込みたい時用(baseurl→https://%s.huga.com/abc/api/)
+
+        return new Hoge連携クライアント(this.getRestTemplate(), baseUrl, path);
     }
 
     private RestTemplate getRestTemplate() {

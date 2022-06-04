@@ -1,0 +1,4 @@
+external:
+  hoge:
+    #baseurl: https://%s.huga.com/abc/api/
+    baseurl: http://api.thni.net/
