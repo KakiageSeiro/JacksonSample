@@ -4,6 +4,7 @@ package com.kakiageseiro.JacksonSample.infrastructure.model.externalapi.hoge;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.kakiageseiro.JacksonSample.controller.結果型.jzip住所結果型;
 import com.kakiageseiro.JacksonSample.infrastructure.model.externalapi.apibase.ApiLinkFailureException;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,8 +19,15 @@ public class Hoge連携クライアント {
         this.path = path;
     }
 
-    public String get() {
-        return restTemplate.getForObject(this.url + this.path, String.class);
+    public jzip住所結果型 get() {
+        String json = restTemplate.getForObject(this.url + this.path, String.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            jzip住所結果型 jzip住所結果型 = objectMapper.readValue(json, jzip住所結果型.class);
+            return jzip住所結果型;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("objectMapper.readValue error", e);
+        }
     }
 
     // このサンプルプロジェクトではつかってないよ！
